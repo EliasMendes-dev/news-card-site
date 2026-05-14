@@ -1,0 +1,577 @@
+:root {
+    --color-primary: #05080B;
+    --color-secondary: #10100D;
+    --color-accent: #EBA941;
+    --color-text: #F8F4EC;
+    --color-border: #3F3F3C;
+    --color-form: #0C1014;
+    --content-max-width: 1500px;
+    --content-gutter: clamp(16px, 4vw, 32px);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Playfair Display", "Playfair Display Fallback", serif;
+}
+
+p,
+label,
+textarea,
+select,
+button {
+    font-family: "Inter", "Inter Fallback", sans-serif;
+}
+
+.news-site {
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper,
+.site-main,
+.site-footer {
+    width: min(var(--content-max-width), calc(100% - (var(--content-gutter) * 2)));
+    margin-inline: auto;
+}
+
+.section-divider {
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    margin-top: 70px;
+}
+
+.site-header {
+    background: color-mix(in srgb, var(--color-primary) 70%, transparent);
+    color: var(--color-text);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid var(--color-border);
+    z-index: 10;
+
+    /*Efeito de blur*/
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.site-header .content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.site-brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-accent);
+    border-radius: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-primary);
+}
+
+.brand-icon>svg {
+    width: 20px;
+    height: 20px;
+}
+
+.brand-text {
+    text-align: left;
+}
+
+.brand-title {
+    font-family: "Playfair Display", "Playfair Display Fallback", serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.brand-subtitle {
+    font-size: 0.75rem;
+    font-weight: normal;
+    opacity: 0.8;
+}
+
+.header-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-actions>.news-count {
+    font-size: 0.875rem;
+    opacity: 0.8;
+    display: none;
+}
+
+.publish-button {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    padding: 8px 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    cursor: default;
+    outline: none;
+}
+
+.publish-button:hover {
+    filter: brightness(0.9);
+}
+
+.site-intro {
+    color: var(--color-text);
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-intro .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.intro-welcome {
+    font-size: 0.9rem;
+    background-color: color-mix(in srgb, var(--color-accent) 15%, transparent);
+    color: var(--color-accent);
+    padding: 6px 10px;
+    border-radius: 15px;
+    width: fit-content;
+}
+
+.intro-slogan {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.intro-highlight {
+    color: var(--color-accent);
+}
+
+.intro-description {
+    font-size: 1rem;
+    opacity: 0.5;
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+.news-section,
+.main-header {
+    width: 100%;
+}
+
+.main-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-text);
+}
+
+.main-title-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.news-grid {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+}
+
+.news-grid-item {
+    width: 100%;
+}
+
+.news-card {
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid var(--color-border);
+    margin-top: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    gap: 20px;
+}
+
+.news-card:hover {
+    box-shadow: inset 0 -6px 0 var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.card-top {
+    width: 100%;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+}
+
+.card-image>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-bottom {
+    color: var(--color-text);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-meta {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.card-author,
+.card-date {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    font-weight: 300;
+}
+
+.card-author>i,
+.card-date>i {
+    margin-right: 5px;
+}
+
+.card-title {
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: var(--color-accent);
+}
+
+.card-content {
+    display: block;
+}
+
+.card-description {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    opacity: 0.6;
+    font-weight: 300;
+    margin: 10px 0;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-line-clamp-color: var(--color-text);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.read-more {
+    background-color: transparent;
+    color: var(--color-border);
+    border: none;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.read-more>i {
+    margin-left: 7px;
+    font-size: 0.75rem;
+}
+
+.read-more:hover {
+    color: var(--color-accent);
+}
+
+.trash {
+    background-color: transparent;
+    color: var(--color-border);
+    padding: 8px 12px;
+    border: none;
+    font-size: 0.875rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.trash:hover {
+    color: var(--color-accent);
+}
+
+.site-footer {
+    background: color-mix(in srgb, var(--color-primary) 50%, transparent);
+    color: var(--color-text);
+    width: 100%;
+    padding: 20px 0;
+}
+
+.site-footer .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.site-footer .brand-icon {
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-accent);
+    border-radius: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-primary);
+}
+
+.site-footer .brand-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.site-footer .brand-title {
+    font-size: 1.25rem;
+}
+
+.site-footer .right {
+    font-size: 0.875rem;
+    opacity: 0.5;
+}
+
+/* Form */
+.form-news {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    background-color: color-mix(in srgb, var(--color-form) 60%, transparent);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    z-index: 100;
+}
+
+.form-news.active {
+    display: flex;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-form);
+    padding: 10px 20px;
+    color: var(--color-text);
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+    width: 100%;
+    max-width: 700px;
+    padding: 30px;
+    margin: 0 20px;
+}
+
+.form-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-title-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-title {
+    font-size: 1.875rem;
+    /*30px*/
+    font-weight: 400;
+    opacity: 0.9;
+    color: var(--color-accent);
+}
+
+.form-description {
+    font-size: 1rem;
+    opacity: 0.4;
+}
+
+.form-close {
+    background: none;
+    border: none;
+    color: var(--color-text);
+    opacity: 0.5;
+    font-size: 1.25rem;
+    padding: 8px;
+}
+
+.form-close:hover {
+    color: var(--color-accent);
+    opacity: 0.9;
+}
+
+.form-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: color-mix(in srgb, var(--color-text) 78%, transparent);
+    background-color: var(--color-form);
+    padding: 0 6px;
+    pointer-events: none;
+    transition: top 0.2s ease, transform 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+}
+
+.form-group:has(textarea) label {
+    top: 22px;
+    transform: translateY(0);
+}
+
+.form-group:focus-within label,
+.form-group:has(input:not(:placeholder-shown)) label,
+.form-group:has(textarea:not(:placeholder-shown)) label {
+    top: 0;
+    transform: translateY(-50%);
+    font-size: 0.75rem;
+    color: var(--color-accent);
+    border-left: 1px solid var(--color-accent);
+    border-right: 1px solid var(--color-accent);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    padding: 18px 10px 10px;
+    color: var(--color-text);
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-group:focus-within input,
+.form-group:focus-within textarea {
+    border-color: var(--color-accent);
+    outline: none;
+}
+
+.form_actions {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.submit-button,
+.cancel-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.cancel-button {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+
+}
+
+.submit-button {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+
+}
+
+.cancel-button:hover,
+.submit-button:hover {
+    filter: brightness(1.3);
+}
+
+/* Resposive Media Queries */
+@media (min-width: 960px) {
+    .intro-slogan {
+        font-size: 3.2rem;
+        max-width: 680px;
+    }
+
+    .news-card {
+        display: flex;
+        flex-direction: row;
+        height: 280px;
+    }
+
+    .news-card:hover {
+        box-shadow: inset -6px 0 0 var(--color-accent);
+    }
+
+    .card-top {
+        width: 40%;
+    }
+
+    .card-bottom {
+        width: 60%;
+        padding: 40px 20px;
+    }
+
+    .card-image {
+        height: 100%;
+    }
+}
