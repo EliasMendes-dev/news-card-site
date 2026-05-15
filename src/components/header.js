@@ -81,25 +81,18 @@ class SiteHeader extends HTMLElement {
         newsCount.classList.add('news-count');
         newsCount.textContent = '0 Noticias Publicadas';
         headerActions.appendChild(newsCount);
-
+        
         const publishButton = document.createElement('button');
         publishButton.classList.add('publish-button');
         publishButton.id = 'publish-button';
         publishButton.type = 'button';
         publishButton.textContent = '+ Nova Noticia';
-        publishButton.addEventListener('click', () => {
-            this.dispatchEvent(
-                new CustomEvent('open-news-form', {
-                    bubbles: true,
-                    composed: true,
-                })
-            );
-        });
 
         headerActions.appendChild(publishButton);
 
         return headerActions;
     }
+
 
     styles() {
         const sheet = new CSSStyleSheet();
@@ -192,7 +185,7 @@ class SiteHeader extends HTMLElement {
             filter: brightness(0.9);
         }
 
-        @media (min-width: 960px) {
+        @media (min-width: 660px) {
             .header-actions>.news-count {
                 display: block;
             }

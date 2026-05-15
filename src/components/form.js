@@ -7,15 +7,6 @@ class NewsForm extends HTMLElement {
         this.shadow = this.attachShadow({ mode: 'open' });
         this.shadow.appendChild(this.createForm());
         this.shadow.adoptedStyleSheets = [sharedStyles, this.styles()];
-        this.handleKeydown = this.handleKeydown.bind(this);
-    }
-
-    connectedCallback() {
-        document.addEventListener('keydown', this.handleKeydown);
-    }
-
-    disconnectedCallback() {
-        document.removeEventListener('keydown', this.handleKeydown);
     }
 
     createForm() {
@@ -67,7 +58,6 @@ class NewsForm extends HTMLElement {
                 <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
         `;
-        closeButton.addEventListener('click', () => this.close());
 
         formHeader.appendChild(titleContainer);
         formHeader.appendChild(closeButton);
@@ -76,7 +66,6 @@ class NewsForm extends HTMLElement {
         form.classList.add('form');
         form.id = 'news-form';
         form.setAttribute('aria-labelledby', 'form-title');
-        form.addEventListener('submit', (event) => this.handleSubmit(event));
 
         form.appendChild(this.createFormGroup('title', 'Titulo', 'text', true));
         form.appendChild(this.createFormGroup('author', 'Autor(a)', 'text', true));
@@ -90,7 +79,6 @@ class NewsForm extends HTMLElement {
         cancelButton.classList.add('cancel-button');
         cancelButton.type = 'button';
         cancelButton.textContent = 'Cancelar';
-        cancelButton.addEventListener('click', () => this.clean());
 
         const submitButton = document.createElement('button');
         submitButton.classList.add('submit-button');
@@ -104,12 +92,6 @@ class NewsForm extends HTMLElement {
         formContainer.appendChild(formHeader);
         formContainer.appendChild(form);
         formOverlay.appendChild(formContainer);
-
-        formOverlay.addEventListener('click', (event) => {
-            if (event.target === formOverlay) {
-                this.close();
-            }
-        });
 
         this.formOverlay = formOverlay;
         this.form = form;
@@ -146,56 +128,6 @@ class NewsForm extends HTMLElement {
         }
 
         return group;
-    }
-
-    handleKeydown(event) {
-        // Fecha o formulário ao pressionar Escape
-        if (event.key === 'Escape' && this.formOverlay.classList.contains('active')) {
-            this.close();
-        }
-    }
-
-    open() {
-        // Abre o formulário e foca no primeiro campo
-        this.formOverlay.classList.add('active');
-        const firstInput = this.form.querySelector('input, textarea');
-        firstInput?.focus();
-    }
-
-    close() {
-        // Fecha o formulário e limpa os campos
-        this.formOverlay.classList.remove('active');
-        this.form.reset();
-    }
-
-    clean() {
-        // Limpa os campos do formulário sem fechar a janela
-        this.form.reset();
-        const firstInput = this.form.querySelector('input, textarea');
-        firstInput?.focus();
-    }
-
-    handleSubmit(event) {
-        // Previne o comportamento padrão de envio do formulário
-        event.preventDefault();
-
-        const formData = new FormData(this.form);
-        const data = {
-            title: formData.get('title')?.toString().trim(),
-            author: formData.get('author')?.toString().trim(),
-            content: formData.get('content')?.toString().trim(),
-            image: formData.get('image')?.toString().trim(),
-        };
-
-        this.dispatchEvent(
-            new CustomEvent('news-form-submitted', {
-                detail: data,
-                bubbles: true,
-                composed: true,
-            })
-        );
-
-        this.close();
     }
 
     styles() {

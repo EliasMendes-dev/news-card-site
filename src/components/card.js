@@ -150,14 +150,6 @@ class CardNews extends HTMLElement {
         return actions;
     }
 
-    // Button trash apagando o card
-    connectedCallback() {
-        const trashButton = this.shadow.querySelector('.trash');
-        trashButton.addEventListener('click', () => {
-            this.remove();
-        });
-    }
-
         styles() {
             const sheet = new CSSStyleSheet();
 
