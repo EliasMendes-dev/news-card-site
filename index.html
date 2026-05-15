@@ -13,49 +13,22 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
     <!-- CSS -->
-    <link rel="stylesheet" href="styles/card.css">
+    <link rel="stylesheet" href="styles/globals.css">
 
     <!-- JavaScript -->
-    <script defer src="./src/features/news-form.js"></script>
-    <script defer src="./src/components/header.js"></script>
-    <script defer src="./src/components/card.js"></script>
-    <script defer src="./src/components/footer.js"></script>
+    <script defer type="module" src="./src/components/form.js"></script>
+    <script defer type="module" src="./src/features/news-form.js"></script>
+    <script defer type="module" src="./src/components/header.js"></script>
+    <script defer type="module" src="./src/components/card.js"></script>
+    <script defer type="module" src="./src/components/footer.js"></script>
 
 
 </head>
 
 <body>
     <div class="news-site">
-        <header class="site-header">
-            <div class="content-wrapper">
-                <div class="site-brand" aria-label="Impus">
-                    <div class="brand-icon" aria-hidden="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-newspaper-icon lucide-newspaper">
-                            <path d="M15 18h-5" />
-                            <path d="M18 14h-8" />
-                            <path
-                                d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2" />
-                            <rect width="8" height="4" x="10" y="6" rx="1" />
-                        </svg>
-                    </div>
-                    <div class="brand-text">
-                        <p class="brand-title">Impus</p>
-                        <p class="brand-subtitle">Portal de Noticias</p>
-                    </div>
-                </div>
-
-                <div class="header-actions">
-                    <p class="news-count">0 Noticias Publicadas</p>
-                    <button class="publish-button" id="publish-button" type="button">+ Nova Noticia</button>
-                </div>
-            </div>
-        </header>
+        <site-header></site-header>
 
         <section class="site-intro" aria-labelledby="intro-title">
             <div class="content-wrapper">
@@ -78,162 +51,41 @@
                 </header>
 
                 <ul class="news-grid" role="list">
+
                     <li class="news-grid-item">
-                        <article class="news-card">
-                            <div class="card-top">
-                                <div class="card-image">
-                                    <img src="/assets/street.jpg" alt="Estrada reformada em Sao Paulo">
-                                </div>
-                            </div>
-                            <div class="card-bottom">
-                                <div class="card-meta">
-                                    <p class="card-author"><i class="fa-regular fa-user" aria-hidden="true"></i> Jose
-                                        Elias</p>
-                                    <p class="card-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> <time
-                                            datetime="2026-08-29">29 Aug 2026</time></p>
-                                </div>
-                                <div class="card-content">
-                                    <h3 class="card-title">Estrada é reformada em Sao Paulo</h3>
-                                    <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Ut aut ullam commodi quos sunt neque cumque maxime, quis repellat libero amet
-                                        excepturi inventore harum quas obcaecati magni, id autem natus.</p>
-                                </div>
-                                <div class="card-actions">
-                                    <button class="read-more" type="button">Leia Mais <i
-                                            class="fa-solid fa-arrow-turn-up" aria-hidden="true"></i></button>
-                                    <button class="trash" type="button" aria-label="Remover noticia"><i
-                                            class="fa-regular fa-trash-can" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-                        </article>
+                        <card-news photo="assets/art.jpg" title="Arte urbana transforma centro historico"
+                            author="Lara Monteiro" date="2026-05-14"
+                            content="Murais colaborativos ocupam predios antigos e atraem visitantes para uma nova rota cultural no centro da cidade.">
+                        </card-news>
                     </li>
 
                     <li class="news-grid-item">
-                        <article class="news-card">
-                            <div class="card-top">
-                                <div class="card-image">
-                                    <img src="/assets/journal.jpg" alt="Jornal de noticias">
-                                </div>
-                            </div>
-                            <div class="card-bottom">
-                                <div class="card-meta">
-                                    <p class="card-author"><i class="fa-regular fa-user" aria-hidden="true"></i> Jose
-                                        Elias</p>
-                                    <p class="card-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> <time
-                                            datetime="2026-08-29">29 Aug 2026</time></p>
-                                </div>
-                                <div class="card-content">
-                                    <h3 class="card-title">Panorama do jornalismo local</h3>
-                                    <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Tempora corporis libero nisi reiciendis, maxime repellendus sed, dolorum quia
-                                        adipisci ullam sint quod quasi dicta illum cupiditate consequuntur.</p>
-                                </div>
-                                <div class="card-actions">
-                                    <button class="read-more" type="button">Leia Mais <i
-                                            class="fa-solid fa-arrow-turn-up" aria-hidden="true"></i></button>
-                                    <button class="trash" type="button" aria-label="Remover noticia"><i
-                                            class="fa-regular fa-trash-can" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-                        </article>
+                        <card-news photo="assets/journal.jpg" title="Jornalismo de dados ganha espaco nas redacoes"
+                            author="Caio Menezes" date="2026-05-11"
+                            content="Equipes de reportagem ampliam o uso de bases publicas para investigar mobilidade, saude e seguranca com mais precisao.">
+                        </card-news>
                     </li>
 
                     <li class="news-grid-item">
-                        <article class="news-card">
-                            <div class="card-top">
-                                <div class="card-image">
-                                    <img src="/assets/art.jpg" alt="Arte abstrata">
-                                </div>
-                            </div>
-                            <div class="card-bottom">
-                                <div class="card-meta">
-                                    <p class="card-author"><i class="fa-regular fa-user" aria-hidden="true"></i> Jose
-                                        Elias</p>
-                                    <p class="card-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> <time
-                                            datetime="2026-08-29">29 Aug 2026</time></p>
-                                </div>
-                                <div class="card-content">
-                                    <h3 class="card-title">Arte urbana ganha espaco no centro</h3>
-                                    <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Unde eaque dolor perferendis alias ad recusandae nostrum quod, animi ex earum.
-                                        Ut beatae magni expedita atque nihil.</p>
-                                </div>
-                                <div class="card-actions">
-                                    <button class="read-more" type="button">Leia Mais <i
-                                            class="fa-solid fa-arrow-turn-up" aria-hidden="true"></i></button>
-                                    <button class="trash" type="button" aria-label="Remover noticia"><i
-                                            class="fa-regular fa-trash-can" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-                        </article>
+                        <card-news photo="assets/street.jpg" title="Nova obra viaria reduz tempo no deslocamento"
+                            author="Marina Alves" date="2026-05-08"
+                            content="Motoristas e ciclistas relatam melhoria no fluxo apos a entrega da nova ligacao entre bairros estrategicos.">
+                        </card-news>
                     </li>
+
                 </ul>
             </section>
         </main>
 
         <hr class="section-divider">
 
-        <footer class="site-footer">
-            <div class="content-wrapper">
-                <div class="site-brand" aria-label="Impus">
-                    <div class="brand-icon" aria-hidden="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-newspaper-icon lucide-newspaper">
-                            <path d="M15 18h-5" />
-                            <path d="M18 14h-8" />
-                            <path
-                                d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2" />
-                            <rect width="8" height="4" x="10" y="6" rx="1" />
-                        </svg>
-                    </div>
-                    <div class="brand-text">
-                        <p class="brand-title">Impus</p>
-                    </div>
-                </div>
-                <small class="right">&copy; 2026 Impus News. All rights reserved.</small>
-            </div>
-        </footer>
+        <site-footer></site-footer>
+        <news-form></news-form>
     </div>
 
-    <div class="form-news" id="form-news" role="dialog" aria-modal="true" aria-labelledby="form-title">
-        <div class="form-container">
-            <div class="form-header">
-                <div class="form-title-container">
-                    <h2 class="form-title" id="form-title">Nova Notícia</h2>
-                    <p class="form-description">Preencha os campos abaixo para publicar uma nova notícia.</p>
-                </div>
-                <button class="form-close" id="form-close" type="button" aria-label="Fechar formulário">
-                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-                </button>
-            </div>
-            <form class="form" id="news-form" aria-labelledby="form-title">
-                <div class="form-group">
-                    <label for="title">Titulo</label>
-                    <input type="text" id="title" name="title" placeholder=" " required>
-                </div>
-                <div class="form-group">
-                    <label for="author">Autor(a)</label>
-                    <input type="text" id="author" name="author" placeholder=" " required>
-                </div>
 
-                <div class="form-group">
-                    <label for="content">Conteúdo</label>
-                    <textarea id="content" name="content" rows="5" placeholder=" " required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="image">URL da Imagem</label>
-                    <input type="url" id="image" name="image" placeholder=" ">
-                </div>
-                <div class="form_actions">
-                    <button class="cancel-button" type="button">Cancelar</button>
-                    <button class="submit-button" type="submit">Publicar Notícia</button>
-
-                </div>
-            </form>
-        </div>
-    </div>
 
 </body>
 
 </html>
+
